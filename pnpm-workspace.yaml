@@ -1,0 +1,24 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+  # the organization's policy, which turbo builds once for every service
+  - "policies"
+  # a module's docs site is its own workspace member, so its Next and MDX
+  # dependencies stay out of the module it documents. A module cloned on its
+  # own carries the same arrangement in its own pnpm-workspace.yaml.
+  - "apps/*/docs"
+  - "packages/*/docs"
+
+# fg:overrides
+# A distribution uses its own checkouts, whatever version they are at. The
+# ranges in each module stay honest for publishing; this is what stops them
+# being resolved from the registry once a submodule moves past them.
+overrides:
+  "@fairgarden-private/id": "workspace:*"
+  "@fairgarden-private/members": "workspace:*"
+  "@fairgarden/design": "workspace:*"
+  "@fairgarden/distribution": "workspace:*"
+  "@fairgarden/indicators": "workspace:*"
+  "@fairgarden/monolith": "workspace:*"
+  "@fairgarden/policy": "workspace:*"
+# fg:overrides:end

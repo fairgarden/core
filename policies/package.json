@@ -1,0 +1,14 @@
+{
+  "name": "@fairgarden-private/core-policies",
+  "description": "FairGarden's policy for the services this distribution ships, built once for all of them",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "fg-dist policy build",
+    "test": "fg-dist policy test"
+  },
+  "devDependencies": {
+    "@fairgarden/distribution": "^0.1.0-alpha.0",
+    "@fairgarden/policy": "^0.1.0-alpha.0"
+  }
+}

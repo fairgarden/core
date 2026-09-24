@@ -1,0 +1,128 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**"
+      ]
+    },
+    "lint": {
+      "dependsOn": [
+        "^lint"
+      ]
+    },
+    "dev": {
+      "persistent": true,
+      "cache": false
+    },
+    "test": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "test:e2e": {
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": false
+    },
+    "@fairgarden-private/core-policies#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/apps/*/policies/**",
+        "$TURBO_ROOT$/packages/*/policies/**",
+        "$TURBO_ROOT$/package.json"
+      ],
+      "outputs": [
+        "dist/**"
+      ],
+      "env": [
+        "FG_POLICY_SIGNING_KEY"
+      ],
+      "passThroughEnv": [
+        "OPA",
+        "VERCEL_GIT_COMMIT_SHA",
+        "GITHUB_SHA"
+      ]
+    },
+    "@fairgarden-private/core-policies#test": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/apps/*/policies/**",
+        "$TURBO_ROOT$/packages/*/policies/**",
+        "$TURBO_ROOT$/package.json"
+      ],
+      "passThroughEnv": [
+        "OPA"
+      ]
+    },
+    "@fairgarden-private/id#build": {
+      "dependsOn": [
+        "^build",
+        "@fairgarden-private/core-policies#build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**",
+        ".policy/**"
+      ]
+    },
+    "@fairgarden-private/members#build": {
+      "dependsOn": [
+        "^build",
+        "@fairgarden-private/core-policies#build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**",
+        ".policy/**"
+      ]
+    },
+    "@fairgarden-private/core-monolith#build": {
+      "dependsOn": [
+        "^build",
+        "@fairgarden-private/core-policies#build"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**",
+        ".policy/**"
+      ]
+    },
+    "@fairgarden-private/id#dev": {
+      "persistent": true,
+      "cache": false,
+      "dependsOn": [
+        "@fairgarden-private/core-policies#build"
+      ]
+    },
+    "@fairgarden-private/members#dev": {
+      "persistent": true,
+      "cache": false,
+      "dependsOn": [
+        "@fairgarden-private/core-policies#build"
+      ]
+    },
+    "@fairgarden-private/core-monolith#dev": {
+      "persistent": true,
+      "cache": false,
+      "dependsOn": [
+        "@fairgarden-private/core-policies#build"
+      ]
+    }
+  }
+}

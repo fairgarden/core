@@ -1,0 +1,7 @@
+{
+  "roots": ["fairgarden"],
+  "metadata": {
+    "organization": "FairGarden",
+    "source": "https://github.com/fairgarden/core/tree/main/policies"
+  }
+}

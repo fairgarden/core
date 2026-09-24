@@ -1,0 +1,21 @@
+[submodule "packages/policy"]
+	path = packages/policy
+	url = git@github.com:fairgarden/policy.git
+[submodule "packages/design"]
+	path = packages/design
+	url = git@github.com:fairgarden/design.git
+[submodule "packages/monolith"]
+	path = packages/monolith
+	url = git@github.com:fairgarden/monolith.git
+[submodule "packages/indicators"]
+	path = packages/indicators
+	url = git@github.com:fairgarden/indicators.git
+[submodule "packages/distribution"]
+	path = packages/distribution
+	url = git@github.com:fairgarden/distribution.git
+[submodule "apps/id"]
+	path = apps/id
+	url = git@github.com:fairgarden/id.git
+[submodule "apps/members"]
+	path = apps/members
+	url = git@github.com:fairgarden/members.git
