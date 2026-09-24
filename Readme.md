@@ -4,11 +4,13 @@
 
 | Module | Version | Pinned at | Path |
 | --- | --- | --- | --- |
-| [`@fairgarden-private/id`](https://github.com/fairgarden/id) | 0.1.0-alpha.0 | [4c895ee](https://github.com/fairgarden/id/commit/4c895eef92dc6810318142de8676d82c0e497d13) — untagged | `apps/id` |
-| [`@fairgarden-private/members`](https://github.com/fairgarden/members) | 0.1.0-alpha.0 | [f9e1aa1](https://github.com/fairgarden/members/commit/f9e1aa150a6a0091163fdec3c7033c77f9297180) — untagged | `apps/members` |
-| [`@fairgarden-private/design`](https://github.com/fairgarden/design)<br>Fair Garden Design System | 0.1.0-alpha.0 | [49d4e4c](https://github.com/fairgarden/design/commit/49d4e4c35b071d52ba00ea144775be7944389948) — untagged | `packages/design` |
-| [`@fairgarden/distribution`](https://github.com/fairgarden/distribution)<br>Compose versioned modules into a distribution, and extend one distribution from another | 0.1.0-alpha.1 | [544bf4a](https://github.com/fairgarden/distribution/commit/544bf4a4baa25fbc7c29f32c547f60eeffffeb28) — unreleased, after v0.1.0-alpha.0 | `packages/distribution` |
-| [`@fairgarden/monolith`](https://github.com/fairgarden/monolith)<br>Compose several Next.js apps into a single deployable monolith | 0.1.0-alpha.1 | [3c0d1d8](https://github.com/fairgarden/monolith/commit/3c0d1d8bc60a7317d836103f2055bbfb75f16dca) — unreleased, after v0.1.0-alpha.0 | `packages/monolith` |
+| [`@fairgarden-private/id`](https://github.com/fairgarden/id) | 0.1.0-alpha.0 | [b12276c](https://github.com/fairgarden/id/commit/b12276c072c405673828843f3b2d440514b72713) — untagged | `apps/id` |
+| [`@fairgarden-private/members`](https://github.com/fairgarden/members) | 0.1.0-alpha.0 | [5d30b4a](https://github.com/fairgarden/members/commit/5d30b4a5be421f1274ae301b9998e5dd309f861c) — untagged | `apps/members` |
+| [`@fairgarden/design`](https://github.com/fairgarden/design)<br>FairGarden Design System | 0.1.0-alpha.2 | [55add59](https://github.com/fairgarden/design/commit/55add59c38d709cde9d3d57fb3ae202da1bd550a) — unreleased, after v0.1.0-alpha.1 | `packages/design` |
+| [`@fairgarden/distribution`](https://github.com/fairgarden/distribution)<br>Compose versioned modules into a distribution, and extend one distribution from another | 0.1.0-alpha.0 | [6ada574](https://github.com/fairgarden/distribution/commit/6ada5748d82646dbb693481c4eef37295cff7fc0) — unreleased, after v0.1.0-alpha.0 | `packages/distribution` |
+| [`@fairgarden/indicators`](https://github.com/fairgarden/indicators)<br>Put locale, preferences and flags into the path, so every variant of a Next.js page is a static cache key | 0.1.0-alpha.2 | [694d5a6](https://github.com/fairgarden/indicators/commit/694d5a696fa53b220c41a445105ff85747ef22b5) — unreleased, after v0.1.0-alpha.1 | `packages/indicators` |
+| [`@fairgarden/monolith`](https://github.com/fairgarden/monolith)<br>Compose several Next.js apps into a single deployable monolith | 0.1.0-alpha.0 | [449f39d](https://github.com/fairgarden/monolith/commit/449f39dccb9747d6fa798e38ae1a693fc0a9aa19) — unreleased, after v0.1.0-alpha.0 | `packages/monolith` |
+| [`@fairgarden/policy`](https://github.com/fairgarden/policy)<br>An organization's policy as Open Policy Agent bundles: built in layers from the repository, run in process, disclosed to members, every decision recorded | 0.1.0-alpha.0 | [1bd8be2](https://github.com/fairgarden/policy/commit/1bd8be258ca0014d4ce18d9287e37b2a35fabfc6) — untagged | `packages/policy` |
 
 A module pinned at a commit rather than a tag is being shipped ahead of
 its last release, so its stated version is not what is deployed.
