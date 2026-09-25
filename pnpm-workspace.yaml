@@ -13,6 +13,10 @@ packages:
 # A distribution uses its own checkouts, whatever version they are at. The
 # ranges in each module stay honest for publishing; this is what stops them
 # being resolved from the registry once a submodule moves past them.
+allowBuilds:
+  esbuild: true
+  unrs-resolver: true
+
 overrides:
   "@fairgarden-private/id": "workspace:*"
   "@fairgarden-private/members": "workspace:*"
