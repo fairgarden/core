@@ -6,6 +6,7 @@ export default withMonolith(
     serverExternalPackages: ['oidc-provider'],
   },
   {
-    id: '@fairgarden-private/id',
+    id: '@fairgarden/id',
+    members: '@fairgarden/members',
   }
 )

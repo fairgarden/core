@@ -11,12 +11,21 @@
         "dist/**"
       ]
     },
+    "build:libs": {
+      "dependsOn": [
+        "^build:libs",
+        "build"
+      ]
+    },
     "lint": {
       "dependsOn": [
         "^lint"
       ]
     },
     "dev": {
+      "dependsOn": [
+        "^build"
+      ],
       "persistent": true,
       "cache": false
     },
@@ -31,7 +40,7 @@
       ],
       "cache": false
     },
-    "@fairgarden-private/core-policies#build": {
+    "@fairgarden/core-policies#build": {
       "dependsOn": [
         "^build"
       ],
@@ -53,7 +62,7 @@
         "GITHUB_SHA"
       ]
     },
-    "@fairgarden-private/core-policies#test": {
+    "@fairgarden/core-policies#test": {
       "dependsOn": [
         "^build"
       ],
@@ -67,10 +76,10 @@
         "OPA"
       ]
     },
-    "@fairgarden-private/id#build": {
+    "@fairgarden/id#build": {
       "dependsOn": [
         "^build",
-        "@fairgarden-private/core-policies#build"
+        "@fairgarden/core-policies#build"
       ],
       "outputs": [
         ".next/**",
@@ -79,10 +88,10 @@
         ".policy/**"
       ]
     },
-    "@fairgarden-private/members#build": {
+    "@fairgarden/members#build": {
       "dependsOn": [
         "^build",
-        "@fairgarden-private/core-policies#build"
+        "@fairgarden/core-policies#build"
       ],
       "outputs": [
         ".next/**",
@@ -91,10 +100,10 @@
         ".policy/**"
       ]
     },
-    "@fairgarden-private/core-monolith#build": {
+    "@fairgarden/core-monolith#build": {
       "dependsOn": [
-        "^build",
-        "@fairgarden-private/core-policies#build"
+        "^build:libs",
+        "@fairgarden/core-policies#build"
       ],
       "outputs": [
         ".next/**",
@@ -103,25 +112,38 @@
         ".policy/**"
       ]
     },
-    "@fairgarden-private/id#dev": {
-      "persistent": true,
-      "cache": false,
+    "@fairgarden/id#dev": {
       "dependsOn": [
-        "@fairgarden-private/core-policies#build"
+        "^build",
+        "@fairgarden/core-policies#build"
+      ],
+      "persistent": true,
+      "cache": false
+    },
+    "@fairgarden/members#dev": {
+      "dependsOn": [
+        "^build",
+        "@fairgarden/core-policies#build"
+      ],
+      "persistent": true,
+      "cache": false
+    },
+    "@fairgarden/core-monolith#dev": {
+      "dependsOn": [
+        "^build:libs",
+        "@fairgarden/core-policies#build"
+      ],
+      "persistent": true,
+      "cache": false
+    },
+    "@fairgarden/id#build:libs": {
+      "dependsOn": [
+        "^build:libs"
       ]
     },
-    "@fairgarden-private/members#dev": {
-      "persistent": true,
-      "cache": false,
+    "@fairgarden/members#build:libs": {
       "dependsOn": [
-        "@fairgarden-private/core-policies#build"
-      ]
-    },
-    "@fairgarden-private/core-monolith#dev": {
-      "persistent": true,
-      "cache": false,
-      "dependsOn": [
-        "@fairgarden-private/core-policies#build"
+        "^build:libs"
       ]
     }
   }

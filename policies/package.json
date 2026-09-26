@@ -1,5 +1,5 @@
 {
-  "name": "@fairgarden-private/core-policies",
+  "name": "@fairgarden/core-policies",
   "description": "FairGarden's policy for the services this distribution ships, built once for all of them",
   "private": true,
   "type": "module",

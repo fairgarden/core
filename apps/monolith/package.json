@@ -1,15 +1,18 @@
 {
-  "name": "@fairgarden-private/core-monolith",
+  "name": "@fairgarden/core-monolith",
   "version": "0.1.0-alpha.0",
   "private": true,
   "scripts": {
-    "dev": "fg-dist policy use && next dev",
+    "dev": "fg-dist policy use && next dev -p 3000",
     "build": "fg-dist policy use && next build",
-    "start": "next start",
+    "start": "next start -p 3000",
     "lint": "eslint"
   },
   "dependencies": {
-    "@fairgarden-private/id": "0.1.0-alpha.0",
+    "@electric-sql/pglite": "^0.5.8",
+    "@electric-sql/pglite-socket": "^0.2.11",
+    "@fairgarden/id": "0.1.0-alpha.0",
+    "@fairgarden/members": "0.1.0-alpha.0",
     "@fairgarden/indicators": "workspace:0.1.0-alpha.0",
     "@fairgarden/monolith": "workspace:0.1.0-alpha.0",
     "classnames": "^2.5.1",

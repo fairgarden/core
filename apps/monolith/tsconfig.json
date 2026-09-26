@@ -23,7 +23,7 @@
       }
     ],
     "paths": {
-      "@fairgarden-private/monolith/*": [
+      "@fairgarden/core-monolith/*": [
         "./*"
       ]
     },

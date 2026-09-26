@@ -3,8 +3,12 @@
   "version": "26.09.01-alpha.0",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
+    "build": "turbo run build --filter=./apps/monolith",
+    "dev": "turbo run dev --filter=./apps/monolith",
+    "modular:build": "turbo run build --filter='./apps/*' --filter='!./apps/monolith'",
+    "modular:dev": "turbo run dev --filter='./apps/*' --filter='!./apps/monolith'",
+    "docs:build": "turbo run build --filter='./apps/*/docs' --filter='./packages/*/docs'",
+    "docs:dev": "turbo run dev --filter='./apps/*/docs' --filter='./packages/*/docs'",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "test:e2e": "turbo run test:e2e"

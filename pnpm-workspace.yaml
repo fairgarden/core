@@ -17,9 +17,12 @@ allowBuilds:
   esbuild: true
   unrs-resolver: true
 
+minimumReleaseAgeExclude:
+  - '@fairgarden/docs@0.13.4-canary.18'
+
 overrides:
-  "@fairgarden-private/id": "workspace:*"
-  "@fairgarden-private/members": "workspace:*"
+  "@fairgarden/id": "workspace:*"
+  "@fairgarden/members": "workspace:*"
   "@fairgarden/design": "workspace:*"
   "@fairgarden/distribution": "workspace:*"
   "@fairgarden/indicators": "workspace:*"
