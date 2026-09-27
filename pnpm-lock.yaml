@@ -577,9 +577,6 @@ importers:
       '@fairgarden/distribution':
         specifier: workspace:*
         version: link:../distribution
-      '@fairgarden/docs':
-        specifier: ^0.13.4-canary.18
-        version: 0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)
       '@material-symbols/svg-400':
         specifier: ^0.47.5
         version: 0.47.5
@@ -683,8 +680,8 @@ importers:
         specifier: workspace:*
         version: link:..
       '@fairgarden/docs':
-        specifier: ^0.13.4-canary.18
-        version: 0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)
+        specifier: ^0.13.3
+        version: 0.13.3(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)
       '@protomaps/basemaps':
         specifier: ^5.7.2
         version: 5.7.2
@@ -1860,8 +1857,8 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@fairgarden/docs@0.13.4-canary.18':
-    resolution: {integrity: sha512-3DHKz0F8Hp+p7hkcZ3ywo5UoStXLu6x/nd0ZV+76x+4FCtKEQmBmdLXg+YNPWikEokWViF/unl19rJirpFlEyg==}
+  '@fairgarden/docs@0.13.3':
+    resolution: {integrity: sha512-63b5bRVF0aZrYOto7XcVyS8/0vU6gn+cVvSxNZwaALs/zqm2LpPUha+hYadOiIGMXzcpoXJiwzJ8CAVAs6Nk7A==}
     engines: {node: '>=22.18.0'}
     hasBin: true
     peerDependencies:
@@ -6357,7 +6354,7 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@fairgarden/docs@0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)':
+  '@fairgarden/docs@0.13.3(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)':
     dependencies:
       '@babel/runtime': 7.29.7
       '@csstools/postcss-light-dark-function': 3.0.4(postcss@8.5.28)
