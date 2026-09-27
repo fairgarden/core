@@ -19,10 +19,11 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "test:e2e": "turbo run test:e2e",
-    "canary": "fg-dist canary",
-    "release": "fg-dist release",
-    "release:check": "fg-dist release --check",
-    "changelog": "fg-dist changelog"
+    "canary": "node packages/distribution/src/cli.ts canary",
+    "next-version": "node packages/distribution/src/cli.ts next-version",
+    "release:check": "node packages/distribution/src/cli.ts release --check",
+    "changelog": "node packages/distribution/src/cli.ts changelog",
+    "dist": "node packages/distribution/src/cli.ts"
   },
   "devDependencies": {
     "turbo": "^2.11.2",

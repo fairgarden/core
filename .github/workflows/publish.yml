@@ -125,7 +125,7 @@ jobs:
       - name: Stamp what it ships
         id: version
         # Refuses when this version is on npm already, or names a month that
-        # is over: `fg-dist release` moves the distribution on.
+        # is over: `pnpm next-version` moves the distribution on.
         run: pnpm run release:check
 
       - name: Publish to npm
@@ -162,11 +162,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         # Anything merged now would be noted under a version already out. Each
         # open pull request's changelog check runs again, sees the release and
-        # refuses it — until `fg-dist release` starts the next version and the
+        # refuses it — until `pnpm next-version` starts the next version and the
         # branch catches up with it.
         run: pnpm run changelog hold
 
       - name: Summary
         run: |
           echo "Published \`@fairgarden/core@${{ steps.version.outputs.version }}\`." >> "$GITHUB_STEP_SUMMARY"
-          echo "Pull requests are held until the next version starts: run \`fg-dist release\` and merge what it opens." >> "$GITHUB_STEP_SUMMARY"
+          echo "Pull requests are held until the next version starts: run \`pnpm next-version\` and merge what it opens." >> "$GITHUB_STEP_SUMMARY"

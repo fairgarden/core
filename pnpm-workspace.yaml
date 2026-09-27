@@ -9,10 +9,6 @@ packages:
   - "apps/*/docs"
   - "packages/*/docs"
 
-# fg:overrides
-# A distribution uses its own checkouts, whatever version they are at. The
-# ranges in each module stay honest for publishing; this is what stops them
-# being resolved from the registry once a submodule moves past them.
 allowBuilds:
   esbuild: true
   unrs-resolver: true
@@ -20,12 +16,16 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - '@fairgarden/docs@0.13.4-canary.18'
 
+# fg:overrides
+# A distribution uses its own checkouts, whatever version they are at. The
+# ranges in each module stay honest for publishing; this is what stops them
+# being resolved from the registry once a submodule moves past them.
 overrides:
-  "@fairgarden/id": "workspace:*"
-  "@fairgarden/members": "workspace:*"
   "@fairgarden/design": "workspace:*"
   "@fairgarden/distribution": "workspace:*"
+  "@fairgarden/id": "workspace:*"
   "@fairgarden/indicators": "workspace:*"
+  "@fairgarden/members": "workspace:*"
   "@fairgarden/monolith": "workspace:*"
   "@fairgarden/policy": "workspace:*"
 # fg:overrides:end
