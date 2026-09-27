@@ -1,6 +1,7 @@
 {
   "name": "@fairgarden/core-monolith",
   "version": "0.1.0-alpha.0",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "fg-dist policy use && next dev -p 3000",
@@ -16,7 +17,7 @@
     "@fairgarden/indicators": "workspace:0.1.0-alpha.0",
     "@fairgarden/monolith": "workspace:0.1.0-alpha.0",
     "classnames": "^2.5.1",
-    "next": "16.3.5",
+    "next": "16.3.6",
     "oidc-provider": "^9.12.2",
     "react": "^19.3.0",
     "react-dom": "^19.3.0"

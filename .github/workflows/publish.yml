@@ -1,0 +1,172 @@
+name: Publish
+
+# Publishes this distribution for others to extend. As for a module, npm
+# trusted publishing is configured against this one workflow file, and there is
+# no npm token: publish once from a workstation, then configure it on npmjs.com.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      dist-tag:
+        description: 'npm dist tag to publish the release to'
+        required: false
+        type: string
+        default: 'latest'
+      dry-run:
+        description: 'Pack and validate without publishing'
+        required: false
+        type: boolean
+        default: false
+
+permissions: {}
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  canary:
+    name: Publish canary
+    if: github.event_name == 'push' && github.event.head_commit.author.name != 'renovate[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # Required for provenance and trusted publishing
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          # What it publishes is read from its modules: their versions, and
+          # the commits it pins.
+          submodules: true
+          persist-credentials: false
+
+      # No build: what a distribution publishes is its manifest and its
+      # policy, not its apps.
+      - uses: pnpm/action-setup@v4
+
+      # No `registry-url`, and npm new enough for trusted publishing: see
+      # .github/actions/publish-prepare in any module for why.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Update npm
+        run: npm install -g npm@^11.5.1
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      # Only where fg-dist is developed in this workspace, as a module of the
+      # distribution: then it is linked from its checkout, which is not built.
+      # Everywhere else it is installed from npm, and this matches nothing.
+      - name: Build fg-dist
+        run: pnpm --filter @fairgarden/distribution --include-workspace-root run --if-present build
+
+      - name: Stamp the canary version and what it ships
+        id: canary
+        run: pnpm run canary
+
+      - name: Publish to npm
+        if: steps.canary.outputs.skip != 'true'
+        run: |
+          if [ "${{ steps.canary.outputs.provenance }}" = "true" ]; then
+            npm publish --tag canary --provenance
+          else
+            npm publish --tag canary
+          fi
+
+  release:
+    name: Publish release
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required for pushing the tag and creating the release
+      id-token: write # Required for provenance and trusted publishing
+      actions: write # Required to run open pull requests' changelog check again
+      pull-requests: read # Required to find them
+    environment:
+      name: npm-publish
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+        with:
+          # What it publishes is read from its modules: their versions, and
+          # the commits it pins.
+          submodules: true
+          fetch-depth: 0 # `gh release create --generate-notes` needs history
+          # Kept, to push the tag and move main on.
+
+      # No build: what a distribution publishes is its manifest and its
+      # policy, not its apps.
+      - uses: pnpm/action-setup@v4
+
+      # No `registry-url`, and npm new enough for trusted publishing: see
+      # .github/actions/publish-prepare in any module for why.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Update npm
+        run: npm install -g npm@^11.5.1
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      # Only where fg-dist is developed in this workspace, as a module of the
+      # distribution: then it is linked from its checkout, which is not built.
+      # Everywhere else it is installed from npm, and this matches nothing.
+      - name: Build fg-dist
+        run: pnpm --filter @fairgarden/distribution --include-workspace-root run --if-present build
+
+      - name: Stamp what it ships
+        id: version
+        # Refuses when this version is on npm already, or names a month that
+        # is over: `fg-dist release` moves the distribution on.
+        run: pnpm run release:check
+
+      - name: Publish to npm
+        env:
+          DIST_TAG: ${{ inputs.dist-tag }}
+          PROVENANCE: ${{ steps.version.outputs.provenance }}
+          DRY_RUN: ${{ inputs.dry-run }}
+        run: |
+          flags="--tag $DIST_TAG"
+          [ "$PROVENANCE" = "true" ] && flags="$flags --provenance"
+          [ "$DRY_RUN" = "true" ] && flags="$flags --dry-run"
+          npm publish $flags
+
+      - name: Tag and create the GitHub release
+        if: inputs.dry-run != true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          git tag "$TAG"
+          git push origin "$TAG"
+          # The changelog's section for this version: the modules it moved,
+          # and what changed in the organization's policy.
+          if pnpm run --silent changelog notes > "$RUNNER_TEMP/notes.md"; then
+            notes="--notes-file $RUNNER_TEMP/notes.md"
+          else
+            notes="--generate-notes"
+          fi
+          gh release create "$TAG" --title "$TAG" $notes --verify-tag
+
+      - name: Hold pull requests until the next version
+        if: inputs.dry-run != true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Anything merged now would be noted under a version already out. Each
+        # open pull request's changelog check runs again, sees the release and
+        # refuses it — until `fg-dist release` starts the next version and the
+        # branch catches up with it.
+        run: pnpm run changelog hold
+
+      - name: Summary
+        run: |
+          echo "Published \`@fairgarden/core@${{ steps.version.outputs.version }}\`." >> "$GITHUB_STEP_SUMMARY"
+          echo "Pull requests are held until the next version starts: run \`fg-dist release\` and merge what it opens." >> "$GITHUB_STEP_SUMMARY"

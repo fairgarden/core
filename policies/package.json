@@ -1,6 +1,7 @@
 {
   "name": "@fairgarden/core-policies",
   "description": "FairGarden's policy for the services this distribution ships, built once for all of them",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {

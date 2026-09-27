@@ -1,2 +1,4 @@
 /dist
 /node_modules
+# turbo's logs; kept out of the published distribution too
+/.turbo

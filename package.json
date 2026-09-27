@@ -1,7 +1,14 @@
 {
   "name": "@fairgarden/core",
-  "version": "26.09.01-alpha.0",
-  "private": true,
+  "version": "26.09.01-alpha.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fairgarden/core.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "turbo run build --filter=./apps/monolith",
     "dev": "turbo run dev --filter=./apps/monolith",
@@ -11,10 +18,18 @@
     "docs:dev": "turbo run dev --filter='./apps/*/docs' --filter='./packages/*/docs'",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "test:e2e": "turbo run test:e2e"
+    "test:e2e": "turbo run test:e2e",
+    "canary": "fg-dist canary",
+    "release": "fg-dist release",
+    "release:check": "fg-dist release --check",
+    "changelog": "fg-dist changelog"
   },
   "devDependencies": {
-    "turbo": "^2.11.2"
+    "turbo": "^2.11.2",
+    "@fairgarden/distribution": "^0.1.0-alpha.3"
   },
-  "packageManager": "pnpm@12.6.0+sha512.3ef68f951cb111ac204b4a5a16f0b2ddf0da56a96e0413e81d855d9f0b55ef926714709028e1cd00c405c2c5fb7b9e8ec4dc46777c805d0373c2f2ff00fd20ec"
+  "packageManager": "pnpm@12.6.0+sha512.3ef68f951cb111ac204b4a5a16f0b2ddf0da56a96e0413e81d855d9f0b55ef926714709028e1cd00c405c2c5fb7b9e8ec4dc46777c805d0373c2f2ff00fd20ec",
+  "files": [
+    "policies"
+  ]
 }
