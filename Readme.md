@@ -10,13 +10,13 @@ Version **26.09.01-alpha.1**
 
 | Module | Version | Pinned at | Path |
 | --- | --- | --- | --- |
-| [`@fairgarden/id`](https://github.com/fairgarden/id) | 0.1.0-alpha.0 | [f0f92f5](https://github.com/fairgarden/id/commit/f0f92f50b0588ed75e3b0e0ea5a4ed1fa9897d42) — untagged | `apps/id` |
-| [`@fairgarden/members`](https://github.com/fairgarden/members) | 0.1.0-alpha.0 | [0549640](https://github.com/fairgarden/members/commit/0549640006e6193f6fc76d6397113525f9a10d69) — untagged | `apps/members` |
-| [`@fairgarden/design`](https://github.com/fairgarden/design)<br>FairGarden Design System | 0.1.0-alpha.2 | [11a4096](https://github.com/fairgarden/design/commit/11a4096f58a4922f91129a0285d839a3cd1a725a) — unreleased, after v0.1.0-alpha.1 | `packages/design` |
+| [`@fairgarden/id`](https://github.com/fairgarden/id) | 0.1.0-alpha.0 | [8370e52](https://github.com/fairgarden/id/commit/8370e52440eb5384dfd4bcc34b58ffc5e61b15c5) — untagged | `apps/id` |
+| [`@fairgarden/members`](https://github.com/fairgarden/members) | 0.1.0-alpha.0 | [a2539d2](https://github.com/fairgarden/members/commit/a2539d20dc238adae873ceeb21801594d65e892a) — untagged | `apps/members` |
+| [`@fairgarden/design`](https://github.com/fairgarden/design)<br>FairGarden Design System | 0.1.0-alpha.2 | [64660c5](https://github.com/fairgarden/design/commit/64660c5904bfa42585b60d5b447bc5a1801a47a2) — unreleased, after v0.1.0-alpha.1 | `packages/design` |
 | [`@fairgarden/distribution`](https://github.com/fairgarden/distribution)<br>Compose versioned modules into a distribution, and extend one distribution from another | 0.1.0-alpha.7 | [271c5ce](https://github.com/fairgarden/distribution/commit/271c5cedab9fcf8698d8f6d43e3afb75defd154d) — unreleased, after v0.1.0-alpha.6 | `packages/distribution` |
-| [`@fairgarden/indicators`](https://github.com/fairgarden/indicators)<br>Put locale, preferences and flags into the path, so every variant of a Next.js page is a static cache key | 0.1.0-alpha.2 | [7fd3982](https://github.com/fairgarden/indicators/commit/7fd398245bc7bdabd7bcbcc0a17dd41ce45a1a47) — unreleased, after v0.1.0-alpha.1 | `packages/indicators` |
-| [`@fairgarden/monolith`](https://github.com/fairgarden/monolith)<br>Compose several Next.js apps into a single deployable monolith | 0.1.0-alpha.1 | [dc78a2e](https://github.com/fairgarden/monolith/commit/dc78a2e0812c56b6b87ba27acf925d0251fe42bc) — unreleased, after v0.1.0-alpha.0 | `packages/monolith` |
-| [`@fairgarden/policy`](https://github.com/fairgarden/policy)<br>An organization's policy as Open Policy Agent bundles: built in layers from the repository, run in process, disclosed to members, every decision recorded | 0.1.0-alpha.0 | [a7495da](https://github.com/fairgarden/policy/commit/a7495da976c4128c3700a8657a5ed7cc0473a9ff) — untagged | `packages/policy` |
+| [`@fairgarden/indicators`](https://github.com/fairgarden/indicators)<br>Put locale, preferences and flags into the path, so every variant of a Next.js page is a static cache key | 0.1.0-alpha.2 | [683bb16](https://github.com/fairgarden/indicators/commit/683bb16133238b24bf7d573933fae1d1b8d27d69) — unreleased, after v0.1.0-alpha.1 | `packages/indicators` |
+| [`@fairgarden/monolith`](https://github.com/fairgarden/monolith)<br>Compose several Next.js apps into a single deployable monolith | 0.1.0-alpha.1 | [4d98122](https://github.com/fairgarden/monolith/commit/4d9812278e0e95fa890870919b86d1f7b80df1a3) — unreleased, after v0.1.0-alpha.0 | `packages/monolith` |
+| [`@fairgarden/policy`](https://github.com/fairgarden/policy)<br>An organization's policy as Open Policy Agent bundles: built in layers from the repository, run in process, disclosed to members, every decision recorded | 0.1.0-alpha.0 | [a8707b7](https://github.com/fairgarden/policy/commit/a8707b7d4524aaca5f78af0993dd501f14e16b41) — untagged | `packages/policy` |
 
 A module pinned at a commit rather than a tag is being shipped ahead of
 its last release, so its stated version is not what is deployed.
@@ -76,6 +76,22 @@ libraries every app uses but none of the apps on their own. turbo tracks that
 with a `build:libs` task: a library's is its build, and an app's is only its
 libraries' (see `turbo.json`). A new app mounted in the monolith needs its own
 `<package>#build:libs` entry like the others.
+
+Before building, both check that the deployment has everything its apps need
+set, and on Vercel refuse to go on without it, naming each variable and what it
+is for. `pnpm dist env setup` adds them to the Vercel project through its CLI —
+one project for the monolith, or one per app built with `modular:build` —
+generating the secrets, and asking only for what it cannot know, such as the
+SMTP server. `pnpm dist env rotate` rotates those secrets with no downtime, and
+`pnpm dist env workflow` writes a workflow that does it every month.
+
+Both builds then migrate the databases of what they built, with
+`fg-dist migrate`: the monolith's every app it mounts, each app alone its own.
+On Vercel that happens in a production build, and in a preview build only once
+`FG_MIGRATE=build` is set for Preview — which is right when each preview has a
+database of its own. Anywhere else it takes `FG_MIGRATE=build` too, so a local
+`pnpm build` leaves your databases alone. Vercel's Build Command has to be
+`pnpm build` for this to run.
 
 ### Testing
 
