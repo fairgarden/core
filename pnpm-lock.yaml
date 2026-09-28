@@ -170,6 +170,12 @@ overrides:
   '@fairgarden/members': workspace:*
   '@fairgarden/monolith': workspace:*
   '@fairgarden/policy': workspace:*
+  '@fairgarden/policy-docs>@fairgarden/design': ^0.1.0-alpha.2
+  '@fairgarden/id-docs>@fairgarden/design': ^0.1.0-alpha.2
+  '@fairgarden/members-docs>@fairgarden/design': ^0.1.0-alpha.2
+  '@fairgarden/distribution-docs>@fairgarden/design': ^0.1.0-alpha.2
+  '@fairgarden/monolith-docs>@fairgarden/design': ^0.1.0-alpha.2
+  '@fairgarden/indicators-docs>@fairgarden/design': ^0.1.0-alpha.2
 
 importers:
 
@@ -299,6 +305,15 @@ importers:
 
   apps/id/docs:
     dependencies:
+      '@base-ui/react':
+        specifier: ^1.8.0
+        version: 1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@fairgarden/design':
+        specifier: ^0.1.0-alpha.2
+        version: 0.1.0-alpha.2(@base-ui/react@1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(@fairgarden/docs@0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3))(@protomaps/basemaps@5.7.2)(@types/react@19.3.0)(maplibre-gl@6.11.1)(pmtiles@4.5.0)(react-dom@19.3.0(react@19.3.0))(react-is@16.13.1)(react@19.3.0)(redux@5.0.1)
+      '@fairgarden/docs':
+        specifier: ^0.13.4-canary.18
+        version: 0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)
       next:
         specifier: ^16.3.5
         version: 16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -336,6 +351,12 @@ importers:
       eslint-config-next:
         specifier: ^16.3.5
         version: 16.3.6(@typescript-eslint/parser@8.70.1(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
+      prettier:
+        specifier: ^3.9.8
+        version: 3.9.9
+      rehype-slug:
+        specifier: ^6.0.0
+        version: 6.0.0
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1(supports-color@10.2.2)
@@ -439,6 +460,15 @@ importers:
 
   apps/members/docs:
     dependencies:
+      '@base-ui/react':
+        specifier: ^1.8.0
+        version: 1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@fairgarden/design':
+        specifier: ^0.1.0-alpha.2
+        version: 0.1.0-alpha.2(@base-ui/react@1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(@fairgarden/docs@0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3))(@protomaps/basemaps@5.7.2)(@types/react@19.3.0)(maplibre-gl@6.11.1)(pmtiles@4.5.0)(react-dom@19.3.0(react@19.3.0))(react-is@16.13.1)(react@19.3.0)(redux@5.0.1)
+      '@fairgarden/docs':
+        specifier: ^0.13.4-canary.18
+        version: 0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)
       next:
         specifier: ^16.3.5
         version: 16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -476,6 +506,12 @@ importers:
       eslint-config-next:
         specifier: ^16.3.5
         version: 16.3.6(@typescript-eslint/parser@8.70.1(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
+      prettier:
+        specifier: ^3.9.8
+        version: 3.9.9
+      rehype-slug:
+        specifier: ^6.0.0
+        version: 6.0.0
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1(supports-color@10.2.2)
@@ -813,6 +849,15 @@ importers:
 
   packages/distribution/docs:
     dependencies:
+      '@base-ui/react':
+        specifier: ^1.8.0
+        version: 1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@fairgarden/design':
+        specifier: ^0.1.0-alpha.2
+        version: 0.1.0-alpha.2(@base-ui/react@1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(@fairgarden/docs@0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3))(@protomaps/basemaps@5.7.2)(@types/react@19.3.0)(maplibre-gl@6.11.1)(pmtiles@4.5.0)(react-dom@19.3.0(react@19.3.0))(react-is@16.13.1)(react@19.3.0)(redux@5.0.1)
+      '@fairgarden/docs':
+        specifier: ^0.13.4-canary.18
+        version: 0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)
       next:
         specifier: ^16.3.5
         version: 16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -850,6 +895,15 @@ importers:
       eslint-config-next:
         specifier: ^16.3.5
         version: 16.3.6(@typescript-eslint/parser@8.70.1(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
+      prettier:
+        specifier: ^3.9.8
+        version: 3.9.9
+      rehype-slug:
+        specifier: ^6.0.0
+        version: 6.0.0
+      remark-gfm:
+        specifier: ^4.0.1
+        version: 4.0.1(supports-color@10.2.2)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -889,6 +943,15 @@ importers:
 
   packages/indicators/docs:
     dependencies:
+      '@base-ui/react':
+        specifier: ^1.8.0
+        version: 1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@fairgarden/design':
+        specifier: ^0.1.0-alpha.2
+        version: 0.1.0-alpha.2(@base-ui/react@1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(@fairgarden/docs@0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3))(@protomaps/basemaps@5.7.2)(@types/react@19.3.0)(maplibre-gl@6.11.1)(pmtiles@4.5.0)(react-dom@19.3.0(react@19.3.0))(react-is@16.13.1)(react@19.3.0)(redux@5.0.1)
+      '@fairgarden/docs':
+        specifier: ^0.13.4-canary.18
+        version: 0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)
       '@fairgarden/indicators':
         specifier: workspace:*
         version: link:..
@@ -929,6 +992,15 @@ importers:
       eslint-config-next:
         specifier: ^16.3.5
         version: 16.3.6(@typescript-eslint/parser@8.70.1(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
+      prettier:
+        specifier: ^3.9.8
+        version: 3.9.9
+      rehype-slug:
+        specifier: ^6.0.0
+        version: 6.0.0
+      remark-gfm:
+        specifier: ^4.0.1
+        version: 4.0.1(supports-color@10.2.2)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -987,6 +1059,15 @@ importers:
 
   packages/monolith/docs:
     dependencies:
+      '@base-ui/react':
+        specifier: ^1.8.0
+        version: 1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@fairgarden/design':
+        specifier: ^0.1.0-alpha.2
+        version: 0.1.0-alpha.2(@base-ui/react@1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(@fairgarden/docs@0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3))(@protomaps/basemaps@5.7.2)(@types/react@19.3.0)(maplibre-gl@6.11.1)(pmtiles@4.5.0)(react-dom@19.3.0(react@19.3.0))(react-is@16.13.1)(react@19.3.0)(redux@5.0.1)
+      '@fairgarden/docs':
+        specifier: ^0.13.4-canary.18
+        version: 0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)
       next:
         specifier: ^16.3.5
         version: 16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -1024,6 +1105,15 @@ importers:
       eslint-config-next:
         specifier: ^16.3.5
         version: 16.3.6(@typescript-eslint/parser@8.70.1(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
+      prettier:
+        specifier: ^3.9.8
+        version: 3.9.9
+      rehype-slug:
+        specifier: ^6.0.0
+        version: 6.0.0
+      remark-gfm:
+        specifier: ^4.0.1
+        version: 4.0.1(supports-color@10.2.2)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -1067,6 +1157,15 @@ importers:
 
   packages/policy/docs:
     dependencies:
+      '@base-ui/react':
+        specifier: ^1.8.0
+        version: 1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@fairgarden/design':
+        specifier: ^0.1.0-alpha.2
+        version: 0.1.0-alpha.2(@base-ui/react@1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(@fairgarden/docs@0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3))(@protomaps/basemaps@5.7.2)(@types/react@19.3.0)(maplibre-gl@6.11.1)(pmtiles@4.5.0)(react-dom@19.3.0(react@19.3.0))(react-is@16.13.1)(react@19.3.0)(redux@5.0.1)
+      '@fairgarden/docs':
+        specifier: ^0.13.4-canary.18
+        version: 0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)
       next:
         specifier: ^16.3.5
         version: 16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -1104,6 +1203,12 @@ importers:
       eslint-config-next:
         specifier: ^16.3.5
         version: 16.3.6(@typescript-eslint/parser@8.70.1(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0)(supports-color@10.2.2))(supports-color@10.2.2)(typescript@6.0.3)
+      prettier:
+        specifier: ^3.9.8
+        version: 3.9.9
+      rehype-slug:
+        specifier: ^6.0.0
+        version: 6.0.0
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1(supports-color@10.2.2)
@@ -1874,6 +1979,26 @@ packages:
   '@eslint/plugin-kit@0.4.1':
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@fairgarden/design@0.1.0-alpha.2':
+    resolution: {integrity: sha512-XDKhyeBnaHpeKAmpQQice9ISIEwGeDfLc4uqsOB6l1ZG6g4iTstDWcXDkBc9ZU3JkZsW4RwD7Cbf8j7E0mcVTQ==}
+    peerDependencies:
+      '@base-ui/react': ^1.8.0
+      '@fairgarden/docs': ^0.13.4-canary.18
+      '@protomaps/basemaps': ^5.7.2
+      maplibre-gl: ^6.11.1
+      pmtiles: ^4.5.0
+      react: ^19
+      react-dom: ^19
+    peerDependenciesMeta:
+      '@fairgarden/docs':
+        optional: true
+      '@protomaps/basemaps':
+        optional: true
+      maplibre-gl:
+        optional: true
+      pmtiles:
+        optional: true
 
   '@fairgarden/docs@0.13.4-canary.18':
     resolution: {integrity: sha512-3DHKz0F8Hp+p7hkcZ3ywo5UoStXLu6x/nd0ZV+76x+4FCtKEQmBmdLXg+YNPWikEokWViF/unl19rJirpFlEyg==}
@@ -6371,6 +6496,27 @@ snapshots:
     dependencies:
       '@eslint/core': 0.17.0
       levn: 0.4.1
+
+  '@fairgarden/design@0.1.0-alpha.2(@base-ui/react@1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(@fairgarden/docs@0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@playwright/test@1.63.0)(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3))(@protomaps/basemaps@5.7.2)(@types/react@19.3.0)(maplibre-gl@6.11.1)(pmtiles@4.5.0)(react-dom@19.3.0(react@19.3.0))(react-is@16.13.1)(react@19.3.0)(redux@5.0.1)':
+    dependencies:
+      '@base-ui/react': 1.8.0(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      '@fontsource-variable/figtree': 5.3.0
+      '@fontsource-variable/fraunces': 5.3.0
+      '@fontsource-variable/source-serif-4': 5.3.0
+      '@fontsource/ibm-plex-mono': 5.3.0
+      class-variance-authority: 0.7.1
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
+      recharts: 3.10.1(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react-is@16.13.1)(react@19.3.0)(redux@5.0.1)
+    optionalDependencies:
+      '@fairgarden/docs': 0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)
+      '@protomaps/basemaps': 5.7.2
+      maplibre-gl: 6.11.1
+      pmtiles: 4.5.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - react-is
+      - redux
 
   '@fairgarden/docs@0.13.4-canary.18(@types/react@19.3.0)(next@16.3.6(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@26.6.2)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(prettier@3.9.9)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(supports-color@10.2.2)(typescript@6.0.3)':
     dependencies:
