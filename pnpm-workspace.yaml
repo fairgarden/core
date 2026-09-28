@@ -15,6 +15,7 @@ allowBuilds:
 
 minimumReleaseAgeExclude:
   - '@fairgarden/docs@0.13.4-canary.18'
+  - '@fairgarden/design@0.1.0-alpha.2'
 
 # fg:overrides
 # A distribution uses its own checkouts, whatever version they are at. The
@@ -28,4 +29,12 @@ overrides:
   "@fairgarden/members": "workspace:*"
   "@fairgarden/monolith": "workspace:*"
   "@fairgarden/policy": "workspace:*"
+  # The docs sites are built on the published design system, not this
+  # checkout of it. fg-dist keeps these lines when it rewrites the block.
+  "@fairgarden/policy-docs>@fairgarden/design": "^0.1.0-alpha.2"
+  "@fairgarden/id-docs>@fairgarden/design": "^0.1.0-alpha.2"
+  "@fairgarden/members-docs>@fairgarden/design": "^0.1.0-alpha.2"
+  "@fairgarden/distribution-docs>@fairgarden/design": "^0.1.0-alpha.2"
+  "@fairgarden/monolith-docs>@fairgarden/design": "^0.1.0-alpha.2"
+  "@fairgarden/indicators-docs>@fairgarden/design": "^0.1.0-alpha.2"
 # fg:overrides:end

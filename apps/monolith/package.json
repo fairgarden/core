@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "fg-dist policy use && next dev -p 3000",
     "build": "fg-dist policy use && next build",
+    "check-env": "fg-dist env check --build",
+    "migrate": "fg-dist migrate --build",
     "start": "next start -p 3000",
     "lint": "eslint"
   },
